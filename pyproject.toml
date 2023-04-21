@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "polar-bites"
+version = "0.1.0"
+description = "Extra bites for py-polars"
+authors = ["maxastyler <maxastyler@gmail.com>"]
+readme = "README.md"
+packages = [{include = "polar_bites"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+polars = "^0.17.5"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
