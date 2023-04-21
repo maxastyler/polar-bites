@@ -1,6 +1,6 @@
 import polars as pl
 
-from polar_bites.manipulation import iterate_over_variables, merge
+from polar_bites.manipulation import iterate_over_variables, merge, partition
 
 
 def test_iterate_over_variables():
@@ -8,17 +8,17 @@ def test_iterate_over_variables():
         {"v1": [0, 0, 1, 1, 2, 2], "v2": [2, 2, 2, 0, 1, 0], "v3": [0, 1, 2, 3, 4, 5]}
     )
     assert [
-               (vars, row)
-               for (vars, frame) in iterate_over_variables(df, ("v1", "v2"))
-               for row in frame.rows()
-           ] == [
-               ((0, 2), (0, 2, 0)),
-               ((0, 2), (0, 2, 1)),
-               ((1, 0), (1, 0, 3)),
-               ((1, 2), (1, 2, 2)),
-               ((2, 0), (2, 0, 5)),
-               ((2, 1), (2, 1, 4)),
-           ]
+        (vars, row)
+        for (vars, frame) in iterate_over_variables(df, ("v1", "v2"))
+        for row in frame.rows()
+    ] == [
+        ((0, 2), (0, 2, 0)),
+        ((0, 2), (0, 2, 1)),
+        ((1, 0), (1, 0, 3)),
+        ((1, 2), (1, 2, 2)),
+        ((2, 0), (2, 0, 5)),
+        ((2, 1), (2, 1, 4)),
+    ]
 
 
 def test_merge():
@@ -41,3 +41,13 @@ def test_merge():
         .sort(["a", "b"])
         .frame_equal(result.sort(["a", "b"]))
     )
+
+
+def test_partition():
+    df_1 = pl.DataFrame({"a": [1, 1], "b": [2, 3], "c": ["a", "b"]})
+    df_2 = pl.DataFrame({"a": [2, 2], "b": [4, 5], "c": ["c", "d"]})
+    original_dict = {(1,): df_1, (2,): df_2}
+    df = pl.concat(original_dict.values())
+    sdf = partition(df, ["a"])
+    for k, v in original_dict.items():
+        assert sdf[k].frame_equal(v)
