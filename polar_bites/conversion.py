@@ -6,7 +6,7 @@ T = TypeVar("T")
 
 
 def numpy_arrays_to_lists(
-        dictionary: dict[T, Any], array_keys: Sequence[T]
+    dictionary: dict[T, Any], array_keys: Sequence[T]
 ) -> dict[T, Any]:
     """Flatten and convert to float all of the keys inside dictionary which are in `array_keys`"""
     return {
@@ -16,7 +16,7 @@ def numpy_arrays_to_lists(
 
 
 def flatten_dict(
-        dictionary: dict[str, Any], key_separator: str = "_", recursive: bool = False
+    dictionary: dict[str, Any], key_separator: str = "_", recursive: bool = False
 ) -> dict[str, Any]:
     """Flatten the dictionaries inside the given dictionary, joining the keys by the given key_separator.
     If recursive, then perform the flattening recursively
@@ -36,7 +36,7 @@ def flatten_dict(
 
 
 def unflatten_dict(
-        dictionary: dict[str, Any], key_separator: str = "_"
+    dictionary: dict[str, Any], key_separator: str = "_"
 ) -> dict[str, Any]:
     """Unflatten a flattened dict with keys separated by `key_separator`"""
     new_dict = {}
@@ -51,7 +51,7 @@ def unflatten_dict(
 
 
 def list_of_dicts_to_dict_of_lists(
-        list_of_dicts: list[dict[str, T]]
+    list_of_dicts: list[dict[str, T]]
 ) -> dict[str, list[T]]:
     """
     Transpose a list of dictionaries (rows of data) into a dictionary of lists (columns of data)
@@ -64,7 +64,7 @@ def list_of_dicts_to_dict_of_lists(
 
 
 def dict_of_lists_to_list_of_dicts(
-        dict_of_lists: dict[str, list[T]]
+    dict_of_lists: dict[str, list[T]]
 ) -> list[dict[str, T]]:
     """Transpose a dict of lists (columns of data) into a list of dictionaries (rows of data)"""
     assoc_lists = zip(*[[(k, v) for v in vs] for k, vs in dict_of_lists.items()])

@@ -13,9 +13,9 @@ from .conversion import (
 
 
 def load_mat_to_dict(
-        filename: Union[Path, str],
-        var_name: Optional[str] = None,
-        array_transform_keys: Optional[Sequence[str]] = None,
+    filename: Union[Path, str],
+    var_name: Optional[str] = None,
+    array_transform_keys: Optional[Sequence[str]] = None,
 ) -> dict[str, Any]:
     """Load a .mat file to a dictionary.
     var_name should be the variable that the data is stored under in the mat file.
@@ -44,7 +44,7 @@ def load_mat_to_dict(
 
 
 def convert_dict_to_dataframe(
-        data_dict: dict[str, Any], columns: Sequence[Column]
+    data_dict: dict[str, Any], columns: Sequence[Column]
 ) -> pl.DataFrame:
     """Convert a dictionary to a dataframe,
     using the columns to perform various transformations on the data"""
@@ -78,10 +78,10 @@ def convert_dict_to_dataframe(
 
 
 def load_mat_to_dataframe(
-        filename: Union[Path, str],
-        *,
-        var_name: Optional[str] = None,
-        columns: Optional[list[Union[str, Column]]] = None,
+    filename: Union[Path, str],
+    *,
+    var_name: Optional[str] = None,
+    columns: Optional[list[Union[str, Column]]] = None,
 ) -> pl.DataFrame:
     """
     Load the given mat file to a dataframe
