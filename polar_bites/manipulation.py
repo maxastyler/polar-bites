@@ -4,10 +4,10 @@ import polars as pl
 
 
 def iterate_over_variables(
-    dataframe: pl.DataFrame,
-    variables: Sequence[str],
-    sort: bool = True,
-    output_as_dict: bool = False,
+        dataframe: pl.DataFrame,
+        variables: Sequence[str],
+        sort: bool = True,
+        output_as_dict: bool = False,
 ) -> Iterator[tuple[Union[tuple, dict[str, object]], pl.DataFrame]]:
     """Create an iterator over the unique values of the given variables,
     sorting in the order they come in
@@ -23,7 +23,7 @@ def iterate_over_variables(
         filtered_frame = dataframe.filter(pl.col(current_var) == value)
         if len(rest) > 0:
             for vars, loop_df in iterate_over_variables(
-                filtered_frame, rest, sort, output_as_dict=output_as_dict
+                    filtered_frame, rest, sort, output_as_dict=output_as_dict
             ):
                 if output_as_dict:
                     yield {current_var: value} | vars, loop_df
@@ -37,10 +37,10 @@ def iterate_over_variables(
 
 
 def merge(
-    old: pl.DataFrame,
-    new: pl.DataFrame,
-    on: Union[str, pl.Expr, Sequence[Union[str, pl.Expr]]],
-    to_merge: Union[str, Sequence[str]],
+        old: pl.DataFrame,
+        new: pl.DataFrame,
+        on: Union[str, pl.Expr, Sequence[Union[str, pl.Expr]]],
+        to_merge: Union[str, Sequence[str]],
 ) -> pl.DataFrame:
     """Given two dataframes, merge the values from the new one into the old one, replacing any
     :param old: The old data

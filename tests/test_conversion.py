@@ -23,7 +23,7 @@ def dict_of_lists_strategy(n: int) -> st.SearchStrategy[dict[str, list[int]]]:
 @given(input=st.integers(min_value=1, max_value=100).flatmap(dict_of_lists_strategy))
 def test_list_of_dicts_to_dict_of_lists_isomorphism(input):
     assert (
-        list_of_dicts_to_dict_of_lists(dict_of_lists_to_list_of_dicts(input)) == input
+            list_of_dicts_to_dict_of_lists(dict_of_lists_to_list_of_dicts(input)) == input
     )
 
 
@@ -37,7 +37,6 @@ def recursive_dict_strategy(blacklist_chars: str) -> st.SearchStrategy[dict[str,
         st.dictionaries(keys=name_strings, values=st.integers(), min_size=1),
         lambda x: st.dictionaries(keys=name_strings, values=x, min_size=1),
     )
-
 
 #
 # @given(
