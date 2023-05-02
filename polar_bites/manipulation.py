@@ -1,5 +1,6 @@
-from typing import Sequence, Iterator, Union
+from typing import Sequence, Iterator, Union, Any
 
+import numpy as np
 import polars as pl
 
 
@@ -77,3 +78,30 @@ def partition(
             dataframe, variables=variables, output_as_dict=False
         )
     }
+
+
+def extract_tensor(
+    dataframe: pl.DataFrame,
+    coordinate_columns: Sequence[str],
+    value_column: str,
+    fill: Any,
+) -> tuple[list[np.ndarray], np.ndarray]:
+    """Given the sequence of coordinate columns, create a sparse (probably irregularly spaced) tensor,
+    with any empty spaces filled with the fill value and return ([list of coordinates], tensor)"""
+
+    shape = []
+    coordinates_list = []
+    for c in coordinate_columns:
+        coordinates = dataframe.select(pl.col(c).unique().sort())
+        coordinates_list.append(coordinates.to_numpy())
+        index_frame = coordinates.with_columns(pl.col(c).cumcount().alias(f"{c}_index"))
+        shape.append(len(index_frame))
+        dataframe = dataframe.join(index_frame, on=c)
+
+    tensor = np.full(shape, fill)
+    for [v, *indices] in dataframe.select(
+        [value_column, *[f"{c}_index" for c in coordinate_columns]]
+    ).rows():
+        tensor[tuple(indices)] = v
+
+    return coordinates_list, tensor

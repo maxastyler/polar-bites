@@ -1,6 +1,12 @@
+import numpy as np
 import polars as pl
 
-from polar_bites.manipulation import iterate_over_variables, merge, partition
+from polar_bites.manipulation import (
+    iterate_over_variables,
+    merge,
+    partition,
+    extract_tensor,
+)
 
 
 def test_iterate_over_variables():
@@ -51,3 +57,21 @@ def test_partition():
     sdf = partition(df, ["a"])
     for k, v in original_dict.items():
         assert sdf[k].frame_equal(v)
+
+
+def test_extract_tensor():
+    shape = (20, 30, 5, 10)
+
+    g = np.random.randint(0, 10, shape)
+    axes = [(f"ax_{i}", np.sort(np.random.rand(s))) for i, s in enumerate(shape)]
+    df = pl.DataFrame(
+        {
+            a_name: grid.flatten()
+            for ((a_name, _), grid) in zip(
+                axes, np.meshgrid(*[cs for (_, cs) in axes], indexing="ij")
+            )
+        }
+        | {"v": g.flatten()}
+    )
+
+    np.allclose(extract_tensor(df, [a for (a, _) in axes], "v", 0)[1], g)
