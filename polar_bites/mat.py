@@ -11,6 +11,12 @@ from .conversion import (
     flatten_dict,
 )
 
+__all__ = [
+    "load_mat_to_dict",
+    "convert_dict_to_dataframe",
+    "load_mat_to_dataframe",
+]
+
 
 def load_mat_to_dict(
     filename: Union[Path, str],
@@ -23,7 +29,9 @@ def load_mat_to_dict(
     Nested cells are flattening by joining their names with underscores
     The keys in array_transform_keys are converted from numpy arrays to lists of floats
 
-    :param filename: awldkjh
+    :param filename: the ``.m``'s filename
+    :param var_name: the variable to extract from the mat file
+    :param array_transform_keys: the list of keys in the structure which should be converted from numpy arrays to lists of float
     """
     array_transform_keys = array_transform_keys or []
     loaded = loadmat(filename, simplify_cells=True)
@@ -53,7 +61,11 @@ def convert_dict_to_dataframe(
     data_dict: dict[str, Any], columns: Sequence[Column]
 ) -> pl.DataFrame:
     """Convert a dictionary to a dataframe,
-    using the columns to perform various transformations on the data"""
+    using the columns to perform various transformations on the data
+
+    :param data_dict: the dictionary containing the data to convert
+    :param columns: the set of Columns describing the column transformations that should happen to this dictionary
+    """
     renames = {
         n: (c.rename if c.rename is not None else n)
         for c in columns
@@ -98,15 +110,9 @@ def load_mat_to_dataframe(
     """
     Load the given mat file to a dataframe
 
-    var_name is the variable name to extract from the file
-
-    columns is a list of the columns to include in the dataframe, with optional types
-
-    array_transform_keys flattens the given keys into lists
-
-    `pre_transform` allows you to apply a function to the given column before conversion to dataframe
-
-    `rename` is a dictionary of column renaming mappings
+    :param filename: the filename to load the data from
+    :param var_name: the variable name to extract from the file. If not given, then this function extracts the first variable from the `.m` file
+    :param columns: a list of the columns to include in the dataframe
     """
     columns = ensure_list_of_columns(columns)
     array_transform_keys = [

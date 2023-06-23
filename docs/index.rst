@@ -6,11 +6,14 @@
 Welcome to polar-bites' documentation!
 =======================================
 
-polar-bites is a library of utilities for working with `Link polars <https://github.com/pola-rs/polars>`_
+polar-bites is a library of utilities for working with `polars <https://github.com/pola-rs/polars>`_
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :caption: Contents:
+
+   install
+   example
 
 
 Indices and tables
