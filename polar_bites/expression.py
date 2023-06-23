@@ -17,7 +17,9 @@ def filter_expression_generator(rf: Callable, *exps, **kexps) -> pl.Expr:
     """
     total_exps = list(exps) + [pl.col(k) == v for k, v in kexps.items()]
     if len(total_exps) == 0:
-        raise ValueError("Filter expression generator called without expressions")
+        raise ValueError(
+            "Filter expression generator called without expressions"
+        )
     else:
         return reduce(rf, total_exps)
 
@@ -30,3 +32,6 @@ def afx(*exps, **kwargs) -> pl.Expr:
 def ofx(*exps, **kwargs) -> pl.Expr:
     """Combine the given expressions with the | operator"""
     return filter_expression_generator(operator.or_, *exps, **kwargs)
+
+
+__all__ = ["afx", "ofx"]

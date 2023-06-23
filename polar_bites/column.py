@@ -23,12 +23,16 @@ class Column:
     is_array: bool = field(default=False, kw_only=True)
     """If true, transform the numpy array to a list of floats
     """
-    pre_transform: Optional[Callable[[Any], Any]] = field(default=None, kw_only=True)
+    pre_transform: Optional[Callable[[Any], Any]] = field(
+        default=None, kw_only=True
+    )
     """A function to apply to values before they are included in the dataframe
     """
 
 
-def ensure_list_of_columns(columns: Optional[list[Union[str, Column]]]) -> list[Column]:
+def ensure_list_of_columns(
+    columns: Optional[list[Union[str, Column]]]
+) -> list[Column]:
     """Create a list of columns from values which can be converted to columns"""
     return (
         []

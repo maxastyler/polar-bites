@@ -22,11 +22,17 @@ def load_mat_to_dict(
     If this isn't given, then the first variable is loaded.
     Nested cells are flattening by joining their names with underscores
     The keys in array_transform_keys are converted from numpy arrays to lists of floats
+
+    :param filename: awldkjh
     """
     array_transform_keys = array_transform_keys or []
     loaded = loadmat(filename, simplify_cells=True)
     loaded = loaded[
-        [k for k in loaded.keys() if not (k.startswith("__") and k.endswith("__"))][0]
+        [
+            k
+            for k in loaded.keys()
+            if not (k.startswith("__") and k.endswith("__"))
+        ][0]
         if var_name is None
         else var_name
     ]
@@ -49,7 +55,9 @@ def convert_dict_to_dataframe(
     """Convert a dictionary to a dataframe,
     using the columns to perform various transformations on the data"""
     renames = {
-        n: (c.rename if c.rename is not None else n) for c in columns for n in c.names
+        n: (c.rename if c.rename is not None else n)
+        for c in columns
+        for n in c.names
     }
     transforms = {
         n: c.pre_transform
@@ -73,7 +81,11 @@ def convert_dict_to_dataframe(
         }
     )
     return new_frame.drop(
-        [n for (n, t) in zip(new_frame.columns, new_frame.dtypes) if t == pl.Object]
+        [
+            n
+            for (n, t) in zip(new_frame.columns, new_frame.dtypes)
+            if t == pl.Object
+        ]
     ).with_columns(types)
 
 

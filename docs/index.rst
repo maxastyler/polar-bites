@@ -3,14 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to polar-bites's documentation!
+Welcome to polar-bites' documentation!
 =======================================
+
+polar-bites is a library of utilities for working with `Link polars <https://github.com/pola-rs/polars>`_
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-   api
 
 Indices and tables
 ==================

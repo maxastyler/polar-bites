@@ -13,12 +13,10 @@ author = "Max Tyler"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
-]
+extensions = ["autoapi.extension", "sphinx.ext.autodoc", "sphinx.ext.viewcode"]
+autodoc_typehints = "description"
 
-autosummary_generate = True  # Turn on sphinx.ext.autosummary
+autoapi_dirs = ["../polar_bites"]
 
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
