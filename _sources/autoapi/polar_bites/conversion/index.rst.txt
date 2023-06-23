@@ -1,0 +1,61 @@
+:py:mod:`polar_bites.conversion`
+================================
+
+.. py:module:: polar_bites.conversion
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.conversion.numpy_arrays_to_lists
+   polar_bites.conversion.flatten_dict
+   polar_bites.conversion.unflatten_dict
+   polar_bites.conversion.list_of_dicts_to_dict_of_lists
+   polar_bites.conversion.dict_of_lists_to_list_of_dicts
+
+
+
+Attributes
+~~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.conversion.T
+
+
+.. py:data:: T
+
+   
+
+.. py:function:: numpy_arrays_to_lists(dictionary, array_keys)
+
+   Flatten and convert to float all of the keys inside dictionary which are in `array_keys`
+
+
+.. py:function:: flatten_dict(dictionary, key_separator = '_', recursive = False)
+
+   Flatten the dictionaries inside the given dictionary, joining the keys by the given key_separator.
+   If recursive, then perform the flattening recursively
+
+
+.. py:function:: unflatten_dict(dictionary, key_separator = '_')
+
+   Unflatten a flattened dict with keys separated by `key_separator`
+
+
+.. py:function:: list_of_dicts_to_dict_of_lists(list_of_dicts)
+
+   Transpose a list of dictionaries (rows of data) into a dictionary of lists (columns of data)
+
+
+.. py:function:: dict_of_lists_to_list_of_dicts(dict_of_lists)
+
+   Transpose a dict of lists (columns of data) into a list of dictionaries (rows of data)
+
+

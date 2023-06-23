@@ -1,0 +1,73 @@
+:py:mod:`polar_bites.column`
+============================
+
+.. py:module:: polar_bites.column
+
+
+Module Contents
+---------------
+
+Classes
+~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.column.Column
+
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.column.ensure_list_of_columns
+
+
+
+.. py:class:: Column
+
+
+   A class to define a column to be used in loading experiment data
+
+   .. py:attribute:: names
+      :type: Union[str, Sequence[str]]
+
+      The names to load from the data
+          
+
+
+   .. py:attribute:: rename
+      :type: Optional[str]
+
+      Rename the column names to the given name
+          
+
+
+   .. py:attribute:: as_type
+      :type: Optional[type]
+
+      Cast the values of the column to the given type
+          
+
+
+   .. py:attribute:: is_array
+      :type: bool
+
+      If true, transform the numpy array to a list of floats
+          
+
+
+   .. py:attribute:: pre_transform
+      :type: Optional[Callable[[Any], Any]]
+
+      A function to apply to values before they are included in the dataframe
+          
+
+
+
+.. py:function:: ensure_list_of_columns(columns)
+
+   Create a list of columns from values which can be converted to columns
+
+

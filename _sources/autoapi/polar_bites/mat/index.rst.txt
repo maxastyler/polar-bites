@@ -1,0 +1,52 @@
+:py:mod:`polar_bites.mat`
+=========================
+
+.. py:module:: polar_bites.mat
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.mat.load_mat_to_dict
+   polar_bites.mat.convert_dict_to_dataframe
+   polar_bites.mat.load_mat_to_dataframe
+
+
+
+.. py:function:: load_mat_to_dict(filename, var_name = None, array_transform_keys = None)
+
+   Load a .mat file to a dictionary.
+   var_name should be the variable that the data is stored under in the mat file.
+   If this isn't given, then the first variable is loaded.
+   Nested cells are flattening by joining their names with underscores
+   The keys in array_transform_keys are converted from numpy arrays to lists of floats
+
+   :param filename: the ``.m``'s filename
+   :param var_name: the variable to extract from the mat file
+   :param array_transform_keys: the list of keys in the structure which should be converted from numpy arrays to lists of float
+
+
+.. py:function:: convert_dict_to_dataframe(data_dict, columns)
+
+   Convert a dictionary to a dataframe,
+   using the columns to perform various transformations on the data
+
+   :param data_dict: the dictionary containing the data to convert
+   :param columns: the set of Columns describing the column transformations that should happen to this dictionary
+
+
+.. py:function:: load_mat_to_dataframe(filename, *, var_name = None, columns = None)
+
+   Load the given mat file to a dataframe
+
+   :param filename: the filename to load the data from
+   :param var_name: the variable name to extract from the file. If not given, then this function extracts the first variable from the `.m` file
+   :param columns: a list of the columns to include in the dataframe
+
+

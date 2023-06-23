@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>polar_bites.mat &#8212; polar-bites  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="polar_bites.manipulation" href="../manipulation/index.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-polar_bites.mat">
+<span id="polar-bites-mat"></span><h1><a class="reference internal" href="#module-polar_bites.mat" title="polar_bites.mat"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.mat</span></code></a><a class="headerlink" href="#module-polar_bites.mat" title="Permalink to this heading">¶</a></h1>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">¶</a></h2>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#polar_bites.mat.load_mat_to_dict" title="polar_bites.mat.load_mat_to_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_mat_to_dict</span></code></a>(filename[, var_name, ...])</p></td>
+<td><p>Load a .mat file to a dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#polar_bites.mat.convert_dict_to_dataframe" title="polar_bites.mat.convert_dict_to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_dict_to_dataframe</span></code></a>(data_dict, columns)</p></td>
+<td><p>Convert a dictionary to a dataframe,</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#polar_bites.mat.load_mat_to_dataframe" title="polar_bites.mat.load_mat_to_dataframe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_mat_to_dataframe</span></code></a>(filename, *[, var_name, columns])</p></td>
+<td><p>Load the given mat file to a dataframe</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.mat.load_mat_to_dict">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.mat.</span></span><span class="sig-name descname"><span class="pre">load_mat_to_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_transform_keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.mat.load_mat_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a .mat file to a dictionary.
+var_name should be the variable that the data is stored under in the mat file.
+If this isn’t given, then the first variable is loaded.
+Nested cells are flattening by joining their names with underscores
+The keys in array_transform_keys are converted from numpy arrays to lists of floats</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>) – the <code class="docutils literal notranslate"><span class="pre">.m</span></code>’s filename</p></li>
+<li><p><strong>var_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the variable to extract from the mat file</p></li>
+<li><p><strong>array_transform_keys</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the list of keys in the structure which should be converted from numpy arrays to lists of float</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.mat.convert_dict_to_dataframe">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.mat.</span></span><span class="sig-name descname"><span class="pre">convert_dict_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.mat.convert_dict_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a dictionary to a dataframe,
+using the columns to perform various transformations on the data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dict</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>Any</em><em>]</em>) – the dictionary containing the data to convert</p></li>
+<li><p><strong>columns</strong> (<em>Sequence</em><em>[</em><a class="reference internal" href="../column/index.html#polar_bites.column.Column" title="polar_bites.column.Column"><em>polar_bites.column.Column</em></a><em>]</em>) – the set of Columns describing the column transformations that should happen to this dictionary</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>polars.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.mat.load_mat_to_dataframe">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.mat.</span></span><span class="sig-name descname"><span class="pre">load_mat_to_dataframe</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">var_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.mat.load_mat_to_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the given mat file to a dataframe</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>) – the filename to load the data from</p></li>
+<li><p><strong>var_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the variable name to extract from the file. If not given, then this function extracts the first variable from the <cite>.m</cite> file</p></li>
+<li><p><strong>columns</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="../column/index.html#polar_bites.column.Column" title="polar_bites.column.Column"><em>polar_bites.column.Column</em></a><em>]</em><em>]</em><em>]</em>) – a list of the columns to include in the dataframe</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>polars.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">polar-bites</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites</span></code></a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">API Reference</a><ul>
+  <li><a href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites</span></code></a><ul>
+      <li>Previous: <a href="../manipulation/index.html" title="previous chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.manipulation</span></code></a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Max Tyler.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../../_sources/autoapi/polar_bites/mat/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

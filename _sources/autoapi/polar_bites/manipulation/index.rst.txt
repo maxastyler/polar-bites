@@ -1,0 +1,54 @@
+:py:mod:`polar_bites.manipulation`
+==================================
+
+.. py:module:: polar_bites.manipulation
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.manipulation.iterate_over_variables
+   polar_bites.manipulation.merge
+   polar_bites.manipulation.partition
+   polar_bites.manipulation.extract_tensor
+
+
+
+.. py:function:: iterate_over_variables(dataframe, variables, sort = True, output_as_dict = False)
+
+   Create an iterator over the unique values of the given variables,
+   sorting in the order they come in
+
+   If output_as_dict is False, the first element of the output tuple is a tuple of the variables iterated over
+   If output_as_dict is True, the first element of the output tuple is a dict of the variables iterated over
+
+
+.. py:function:: merge(old, new, on, to_merge)
+
+   Given two dataframes, merge the values from the new one into the old one, replacing any
+   :param old: The old data
+   :param new: The new data
+   :param on: The columns to join on
+   :param to_merge: The columns with new data to overwrite with
+   :returns: The merged dataframe
+
+
+.. py:function:: partition(dataframe, variables)
+
+   Partition a dataframe based on the given variables.
+   Returns a dictionary which is indexed by the tuple of the variables, each value being all the values
+   in the original dataframe with those tuple variables
+
+
+.. py:function:: extract_tensor(dataframe, coordinate_columns, value_column, fill)
+
+   Given the sequence of coordinate columns, create a sparse (probably irregularly spaced) tensor,
+   with any empty spaces filled with the fill value and return ([list of coordinates], tensor)
+
+

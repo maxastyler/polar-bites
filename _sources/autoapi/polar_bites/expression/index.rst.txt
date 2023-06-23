@@ -1,0 +1,30 @@
+:py:mod:`polar_bites.expression`
+================================
+
+.. py:module:: polar_bites.expression
+
+
+Module Contents
+---------------
+
+
+Functions
+~~~~~~~~~
+
+.. autoapisummary::
+
+   polar_bites.expression.afx
+   polar_bites.expression.ofx
+
+
+
+.. py:function:: afx(*exps, **kwargs)
+
+   Combine the given expressions with the & operator
+
+
+.. py:function:: ofx(*exps, **kwargs)
+
+   Combine the given expressions with the | operator
+
+

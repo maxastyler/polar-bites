@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>polar_bites &#8212; polar-bites  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="polar_bites.column" href="column/index.html" />
+    <link rel="prev" title="API Reference" href="../index.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="module-polar_bites">
+<span id="polar-bites"></span><h1><a class="reference internal" href="#module-polar_bites" title="polar_bites"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites</span></code></a><a class="headerlink" href="#module-polar_bites" title="Permalink to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="column/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.column</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="conversion/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.conversion</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="expression/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.expression</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulation/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.manipulation</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="mat/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.mat</span></code></a></li>
+</ul>
+</div>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Permalink to this heading">¶</a></h2>
+<section id="classes">
+<h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#polar_bites.Column" title="polar_bites.Column"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Column</span></code></a></p></td>
+<td><p>A class to define a column to be used in loading experiment data</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">¶</a></h3>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#polar_bites.afx" title="polar_bites.afx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">afx</span></code></a>(*exps, **kwargs)</p></td>
+<td><p>Combine the given expressions with the &amp; operator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#polar_bites.ofx" title="polar_bites.ofx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ofx</span></code></a>(*exps, **kwargs)</p></td>
+<td><p>Combine the given expressions with the | operator</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#polar_bites.iterate_over_variables" title="polar_bites.iterate_over_variables"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iterate_over_variables</span></code></a>(dataframe, variables[, sort, ...])</p></td>
+<td><p>Create an iterator over the unique values of the given variables,</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#polar_bites.partition" title="polar_bites.partition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">partition</span></code></a>(dataframe, variables)</p></td>
+<td><p>Partition a dataframe based on the given variables.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt class="sig sig-object py" id="polar_bites.Column">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">polar_bites.</span></span><span class="sig-name descname"><span class="pre">Column</span></span><a class="headerlink" href="#polar_bites.Column" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to define a column to be used in loading experiment data</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polar_bites.Column.names">
+<span class="sig-name descname"><span class="pre">names</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Sequence</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#polar_bites.Column.names" title="Permalink to this definition">¶</a></dt>
+<dd><p>The names to load from the data</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polar_bites.Column.rename">
+<span class="sig-name descname"><span class="pre">rename</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#polar_bites.Column.rename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename the column names to the given name</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polar_bites.Column.as_type">
+<span class="sig-name descname"><span class="pre">as_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">type</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#polar_bites.Column.as_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cast the values of the column to the given type</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polar_bites.Column.is_array">
+<span class="sig-name descname"><span class="pre">is_array</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#polar_bites.Column.is_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>If true, transform the numpy array to a list of floats</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="polar_bites.Column.pre_transform">
+<span class="sig-name descname"><span class="pre">pre_transform</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Callable</span><span class="p"><span class="pre">[</span></span><span class="p"><span class="pre">[</span></span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#polar_bites.Column.pre_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function to apply to values before they are included in the dataframe</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.afx">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.</span></span><span class="sig-name descname"><span class="pre">afx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exps</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.afx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine the given expressions with the &amp; operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>polars.Expr</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.ofx">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.</span></span><span class="sig-name descname"><span class="pre">ofx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">exps</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.ofx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combine the given expressions with the | operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>polars.Expr</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.iterate_over_variables">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.</span></span><span class="sig-name descname"><span class="pre">iterate_over_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sort</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_as_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.iterate_over_variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an iterator over the unique values of the given variables,
+sorting in the order they come in</p>
+<p>If output_as_dict is False, the first element of the output tuple is a tuple of the variables iterated over
+If output_as_dict is True, the first element of the output tuple is a dict of the variables iterated over</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>polars.DataFrame</em>) – </p></li>
+<li><p><strong>variables</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+<li><p><strong>sort</strong> (<em>bool</em>) – </p></li>
+<li><p><strong>output_as_dict</strong> (<em>bool</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iterator[tuple[Union[tuple, dict[str, object]], polars.DataFrame]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="polar_bites.partition">
+<span class="sig-prename descclassname"><span class="pre">polar_bites.</span></span><span class="sig-name descname"><span class="pre">partition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataframe</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.partition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partition a dataframe based on the given variables.
+Returns a dictionary which is indexed by the tuple of the variables, each value being all the values
+in the original dataframe with those tuple variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataframe</strong> (<em>polars.DataFrame</em>) – </p></li>
+<li><p><strong>variables</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[tuple, polars.DataFrame]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">polar-bites</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">API Reference</a><ul>
+      <li>Previous: <a href="../index.html" title="previous chapter">API Reference</a></li>
+      <li>Next: <a href="column/index.html" title="next chapter"><code class="xref py py-mod docutils literal notranslate"><span class="pre">polar_bites.column</span></code></a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Max Tyler.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../../_sources/autoapi/polar_bites/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
