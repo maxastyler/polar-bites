@@ -21,6 +21,7 @@ debugpy = "^1.6.7"
 hypothesis = "^6.72.1"
 coverage = "^7.2.3"
 sphinx = "^7.0.1"
+livereload = "^2.6.3"
 
 [build-system]
 requires = ["poetry-core"]
