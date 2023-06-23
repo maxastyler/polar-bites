@@ -79,5 +79,6 @@ jobs:
       #----------------------------------------------
       - name: Run tests
         run: |
-	  poetry run python -m pytest
-	  poetry run python -m coverage report
+          source .venv/bin/activate
+          pytest tests/
+          coverage report
