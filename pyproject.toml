@@ -8,8 +8,8 @@ packages = [{ include = "polar_bites" }]
 
 [tool.poetry.dependencies]
 python = "^3.9,<3.12"
-polars = "^0.17.5"
-numpy = "^1.24.2"
+polars = "^0.18.0"
+numpy = "^1.25.0"
 scipy = "^1.10.1"
 attrs = "^23.1.0"
 
@@ -20,6 +20,7 @@ black = "^23.3.0"
 debugpy = "^1.6.7"
 hypothesis = "^6.72.1"
 coverage = "^7.2.3"
+sphinx = "^7.0.1"
 
 [build-system]
 requires = ["poetry-core"]
