@@ -61,7 +61,7 @@ The keys in array_transform_keys are converted from numpy arrays to lists of flo
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>filename</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>) – the <code class="docutils literal notranslate"><span class="pre">.m</span></code>’s filename</p></li>
+<li><p><strong>filename</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>) – the <code class="docutils literal notranslate"><span class="pre">.mat</span></code>’s filename</p></li>
 <li><p><strong>var_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the variable to extract from the mat file</p></li>
 <li><p><strong>array_transform_keys</strong> (<em>Optional</em><em>[</em><em>Sequence</em><em>[</em><em>str</em><em>]</em><em>]</em>) – the list of keys in the structure which should be converted from numpy arrays to lists of float</p></li>
 </ul>
@@ -98,7 +98,7 @@ using the columns to perform various transformations on the data</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>filename</strong> (<em>Union</em><em>[</em><em>pathlib.Path</em><em>, </em><em>str</em><em>]</em>) – the filename to load the data from</p></li>
-<li><p><strong>var_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the variable name to extract from the file. If not given, then this function extracts the first variable from the <cite>.m</cite> file</p></li>
+<li><p><strong>var_name</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – the variable name to extract from the file. If not given, then this function extracts the first variable from the <cite>.mat</cite> file</p></li>
 <li><p><strong>columns</strong> (<em>Optional</em><em>[</em><em>list</em><em>[</em><em>Union</em><em>[</em><em>str</em><em>, </em><a class="reference internal" href="../column/index.html#polar_bites.column.Column" title="polar_bites.column.Column"><em>polar_bites.column.Column</em></a><em>]</em><em>]</em><em>]</em>) – a list of the columns to include in the dataframe</p></li>
 </ul>
 </dd>
