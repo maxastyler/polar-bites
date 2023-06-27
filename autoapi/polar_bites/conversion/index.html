@@ -75,7 +75,9 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="polar_bites.conversion.numpy_arrays_to_lists">
 <span class="sig-prename descclassname"><span class="pre">polar_bites.conversion.</span></span><span class="sig-name descname"><span class="pre">numpy_arrays_to_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">array_keys</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.conversion.numpy_arrays_to_lists" title="Permalink to this definition">¶</a></dt>
-<dd><p>Flatten and convert to float all of the keys inside dictionary which are in <cite>array_keys</cite></p>
+<dd><p>Flatten and convert to float all of the keys inside dictionary which are in <cite>array_keys</cite>
+:param dictionary: the (possibly nested) dictionary which contains the arrays to flatten
+:param array_keys: The sequence of array keys to flatten</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -93,7 +95,10 @@
 <dt class="sig sig-object py" id="polar_bites.conversion.flatten_dict">
 <span class="sig-prename descclassname"><span class="pre">polar_bites.conversion.</span></span><span class="sig-name descname"><span class="pre">flatten_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recursive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.conversion.flatten_dict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flatten the dictionaries inside the given dictionary, joining the keys by the given key_separator.
-If recursive, then perform the flattening recursively</p>
+If recursive, then perform the flattening recursively
+:param dictionary: The dictionary to flatten
+:param key_separator: The string to join the flattened keys with
+:param recursive: if true, go recursively through the dictionary, joining all sub dictionaries together</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -111,7 +116,9 @@ If recursive, then perform the flattening recursively</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="polar_bites.conversion.unflatten_dict">
 <span class="sig-prename descclassname"><span class="pre">polar_bites.conversion.</span></span><span class="sig-name descname"><span class="pre">unflatten_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#polar_bites.conversion.unflatten_dict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unflatten a flattened dict with keys separated by <cite>key_separator</cite></p>
+<dd><p>Unflatten a flattened dict with keys separated by <cite>key_separator</cite>
+:param dictionary: the dictionary to unflatten
+:param key_separator: the separating string to separate keys on</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

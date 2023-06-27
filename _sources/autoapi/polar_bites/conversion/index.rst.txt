@@ -36,17 +36,24 @@ Attributes
 .. py:function:: numpy_arrays_to_lists(dictionary, array_keys)
 
    Flatten and convert to float all of the keys inside dictionary which are in `array_keys`
+   :param dictionary: the (possibly nested) dictionary which contains the arrays to flatten
+   :param array_keys: The sequence of array keys to flatten
 
 
 .. py:function:: flatten_dict(dictionary, key_separator = '_', recursive = False)
 
    Flatten the dictionaries inside the given dictionary, joining the keys by the given key_separator.
    If recursive, then perform the flattening recursively
+   :param dictionary: The dictionary to flatten
+   :param key_separator: The string to join the flattened keys with
+   :param recursive: if true, go recursively through the dictionary, joining all sub dictionaries together
 
 
 .. py:function:: unflatten_dict(dictionary, key_separator = '_')
 
    Unflatten a flattened dict with keys separated by `key_separator`
+   :param dictionary: the dictionary to unflatten
+   :param key_separator: the separating string to separate keys on
 
 
 .. py:function:: list_of_dicts_to_dict_of_lists(list_of_dicts)

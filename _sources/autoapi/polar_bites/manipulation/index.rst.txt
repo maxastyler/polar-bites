@@ -28,6 +28,8 @@ Functions
    If output_as_dict is False, the first element of the output tuple is a tuple of the variables iterated over
    If output_as_dict is True, the first element of the output tuple is a dict of the variables iterated over
 
+   :returns: An iterator over the different unique combinations of column values, and the corresponding dataframe.
+
 
 .. py:function:: merge(old, new, on, to_merge)
 

@@ -35,10 +35,41 @@
   <section id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">¶</a></h1>
 <p>A list of things you might want to do with <a class="reference internal" href="index.html"><span class="doc">polar-bites</span></a>.</p>
+<section id="iterating-over-variables">
+<h2>Iterating over variables<a class="headerlink" href="#iterating-over-variables" title="Permalink to this heading">¶</a></h2>
+<p>You can use the <a class="reference internal" href="autoapi/polar_bites/manipulation/index.html#polar_bites.manipulation.iterate_over_variables" title="polar_bites.manipulation.iterate_over_variables"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.manipulation.iterate_over_variables()</span></code></a> function to iterate over sub dataframes, grouped by the unique values of the variables. So, if you have a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code> with columns <code class="docutils literal notranslate"><span class="pre">[col_1,</span> <span class="pre">col_2,</span> <span class="pre">col_3]</span></code>, then the function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polar_bites</span><span class="o">.</span><span class="n">manipulation</span><span class="o">.</span><span class="n">iterate_over_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;col_1&quot;</span><span class="p">,</span> <span class="s2">&quot;col_2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Will return an iterator, which returns a tuple <code class="docutils literal notranslate"><span class="pre">((col_1_value,</span> <span class="pre">col_2_value),</span> <span class="pre">filtered_datafrae)</span></code> where the first element of the tuple contains a tuple which is the unique combination of values from the columns that you filtered on, and the second element of the tuple is the dataframe filtered by these unique values.</p>
+<p>If the argument <code class="docutils literal notranslate"><span class="pre">output_as_dict</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code>, then the first element of the iterators tuples will be a dictionary mapping column name to unique value for each combination of unique values.</p>
+<p>This is a nice function to use in a for loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">((</span><span class="n">col_1</span><span class="p">,</span> <span class="n">col_2</span><span class="p">),</span> <span class="n">df</span><span class="p">)</span> <span class="ow">in</span> <span class="n">polar_bites</span><span class="o">.</span><span class="n">manipulation</span><span class="o">.</span><span class="n">iterate_over_variables</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;col_1&quot;</span><span class="p">,</span> <span class="s2">&quot;col_2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col_1</span><span class="p">,</span> <span class="n">col_2</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="extracting-a-tensor-of-values">
+<h2>Extracting a tensor of values<a class="headerlink" href="#extracting-a-tensor-of-values" title="Permalink to this heading">¶</a></h2>
+<p>The <a class="reference internal" href="autoapi/polar_bites/manipulation/index.html#polar_bites.manipulation.extract_tensor" title="polar_bites.manipulation.extract_tensor"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.manipulation.extract_tensor()</span></code></a> allows you to extract a (possibly irregular) grid of values from the dataframe. This could be useful, for example, if you had data stored in a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code> with columns <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">value]</span></code> where <code class="docutils literal notranslate"><span class="pre">x,y,z</span></code> are the coordinates and <code class="docutils literal notranslate"><span class="pre">value</span></code> is the value at those coords. You could extract a 3D numpy array with these values like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">([</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">zs</span><span class="p">],</span> <span class="n">value_cube</span><span class="p">)</span> <span class="o">=</span> <span class="n">extract_tensor</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">],</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Where the points with missing value get filled with 0.</p>
+<p>This returns 3 1D arrays in a list, which we have assigned to <code class="docutils literal notranslate"><span class="pre">[xs,</span> <span class="pre">ys,</span> <span class="pre">zs]</span></code> and are the coordinates along each axis, and also the cube of values.</p>
+</section>
 <section id="loading-matlab-files">
 <h2>Loading MATLAB files<a class="headerlink" href="#loading-matlab-files" title="Permalink to this heading">¶</a></h2>
 <p>The function <a class="reference internal" href="autoapi/polar_bites/mat/index.html#polar_bites.mat.load_mat_to_dataframe" title="polar_bites.mat.load_mat_to_dataframe"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.mat.load_mat_to_dataframe()</span></code></a> is used to extract a structure array from a given <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file.
 It takes the filename of the <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file, and optionally the name of the variable to extract, and the list of columns to extract. If not given a name, it will extract the first variable from the file. The list of columns allows for selection/transformation of the data before it is loaded into a dataframe.</p>
+<section id="finding-keys">
+<h3>Finding Keys<a class="headerlink" href="#finding-keys" title="Permalink to this heading">¶</a></h3>
+<p>If you just want to find what keys are in a <code class="docutils literal notranslate"><span class="pre">.mat</span></code> file, you can use <a class="reference internal" href="autoapi/polar_bites/mat/index.html#polar_bites.mat.load_mat_to_dict" title="polar_bites.mat.load_mat_to_dict"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.mat.load_mat_to_dict()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">polar_bites</span><span class="o">.</span><span class="n">mat</span><span class="o">.</span><span class="n">load_mat_to_dict</span><span class="p">(</span><span class="s2">&quot;mat_file.mat&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>printing these <code class="docutils literal notranslate"><span class="pre">keys()</span></code> is what you need.</p>
+</section>
 <section id="the-column">
 <h3>The Column<a class="headerlink" href="#the-column" title="Permalink to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="autoapi/polar_bites/column/index.html#polar_bites.column.Column" title="polar_bites.column.Column"><code class="xref py py-class docutils literal notranslate"><span class="pre">Column</span></code></a> class helps to load columns from a MATLAB data file. It is meant to be used with <a class="reference internal" href="autoapi/polar_bites/mat/index.html#polar_bites.mat.load_mat_to_dataframe" title="polar_bites.mat.load_mat_to_dataframe"><code class="xref py py-func docutils literal notranslate"><span class="pre">load_mat_to_dataframe</span></code></a>. There are five attributes that can be declared in a column, but only <code class="docutils literal notranslate"><span class="pre">names</span></code> is necessary.</p>
@@ -98,6 +129,23 @@ renamed to <code class="docutils literal notranslate"><span class="pre">shorter_
 <p>When loading MATLAB data with nested structs, the column names are flattened by joining them with underscores. So, if there is a struct with column <code class="docutils literal notranslate"><span class="pre">column_1</span></code>, which has a child struct with columns <code class="docutils literal notranslate"><span class="pre">c1</span></code>, and <code class="docutils literal notranslate"><span class="pre">c2</span></code>, they would be accessible with the column names <code class="docutils literal notranslate"><span class="pre">column_1_c1</span></code> and <code class="docutils literal notranslate"><span class="pre">column_1_c2</span></code>.</p>
 </section>
 </section>
+<section id="filtering-data">
+<h2>Filtering data<a class="headerlink" href="#filtering-data" title="Permalink to this heading">¶</a></h2>
+<p>Filtering data in polars is a little unweildy, so I’ve written two helper functions: <a class="reference internal" href="autoapi/polar_bites/expression/index.html#polar_bites.expression.afx" title="polar_bites.expression.afx"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.expression.afx()</span></code></a> and <a class="reference internal" href="autoapi/polar_bites/expression/index.html#polar_bites.expression.ofx" title="polar_bites.expression.ofx"><code class="xref py py-func docutils literal notranslate"><span class="pre">polar_bites.expression.ofx()</span></code></a> to ease this. These functions take in a variable amount of individual expressions, and <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> / <code class="docutils literal notranslate"><span class="pre">|</span></code> them together, respectively. They also take in keyword arguments to remove the need to write <code class="docutils literal notranslate"><span class="pre">polars.col</span></code> most of the time.
+They can be used to shorten:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dataframe</span><span class="o">.</span><span class="n">filter</span><span class="p">(((</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;spacey column name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">)</span> <span class="o">&amp;</span>
+                     <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;column_1&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span>
+                     <span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;column_2&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>To something like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_dataframe</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">afx</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;spacey column name&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">,</span>
+                           <span class="n">column_1</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                           <span class="n">column_2</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>and likewise for <a class="reference internal" href="autoapi/polar_bites/expression/index.html#polar_bites.expression.ofx" title="polar_bites.expression.ofx"><code class="xref py py-func docutils literal notranslate"><span class="pre">ofx</span></code></a>. This makes adding new clauses into the filter expression much nicer than directly inside the <code class="docutils literal notranslate"><span class="pre">filter</span></code> expression.</p>
+</section>
 </section>
 
 
@@ -121,11 +169,15 @@ renamed to <code class="docutils literal notranslate"><span class="pre">shorter_
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#iterating-over-variables">Iterating over variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extracting-a-tensor-of-values">Extracting a tensor of values</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#loading-matlab-files">Loading MATLAB files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#finding-keys">Finding Keys</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#the-column">The Column</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#nested-structs">Nested Structs</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#filtering-data">Filtering data</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
