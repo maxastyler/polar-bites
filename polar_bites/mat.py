@@ -29,7 +29,7 @@ def load_mat_to_dict(
     Nested cells are flattening by joining their names with underscores
     The keys in array_transform_keys are converted from numpy arrays to lists of floats
 
-    :param filename: the ``.m``'s filename
+    :param filename: the ``.mat``'s filename
     :param var_name: the variable to extract from the mat file
     :param array_transform_keys: the list of keys in the structure which should be converted from numpy arrays to lists of float
     """
@@ -111,7 +111,7 @@ def load_mat_to_dataframe(
     Load the given mat file to a dataframe
 
     :param filename: the filename to load the data from
-    :param var_name: the variable name to extract from the file. If not given, then this function extracts the first variable from the `.m` file
+    :param var_name: the variable name to extract from the file. If not given, then this function extracts the first variable from the `.mat` file
     :param columns: a list of the columns to include in the dataframe
     """
     columns = ensure_list_of_columns(columns)
