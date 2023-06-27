@@ -15,6 +15,8 @@ def iterate_over_variables(
 
     If output_as_dict is False, the first element of the output tuple is a tuple of the variables iterated over
     If output_as_dict is True, the first element of the output tuple is a dict of the variables iterated over
+
+    :returns: An iterator over the different unique combinations of column values, and the corresponding dataframe.
     """
     [current_var, *rest] = variables
     values = dataframe[current_var].unique()
@@ -87,14 +89,17 @@ def extract_tensor(
     fill: Any,
 ) -> tuple[list[np.ndarray], np.ndarray]:
     """Given the sequence of coordinate columns, create a sparse (probably irregularly spaced) tensor,
-    with any empty spaces filled with the fill value and return ([list of coordinates], tensor)"""
+    with any empty spaces filled with the fill value and return ([list of coordinates], tensor)
+    """
 
     shape = []
     coordinates_list = []
     for c in coordinate_columns:
         coordinates = dataframe.select(pl.col(c).unique().sort())
         coordinates_list.append(coordinates.to_numpy())
-        index_frame = coordinates.with_columns(pl.col(c).cumcount().alias(f"{c}_index"))
+        index_frame = coordinates.with_columns(
+            pl.col(c).cumcount().alias(f"{c}_index")
+        )
         shape.append(len(index_frame))
         dataframe = dataframe.join(index_frame, on=c)
 

@@ -8,7 +8,10 @@ T = TypeVar("T")
 def numpy_arrays_to_lists(
     dictionary: dict[T, Any], array_keys: Sequence[T]
 ) -> dict[T, Any]:
-    """Flatten and convert to float all of the keys inside dictionary which are in `array_keys`"""
+    """Flatten and convert to float all of the keys inside dictionary which are in `array_keys`
+    :param dictionary: the (possibly nested) dictionary which contains the arrays to flatten
+    :param array_keys: The sequence of array keys to flatten
+    """
     return {
         k: [float(x) for x in np.array(v).flatten()] if k in array_keys else v
         for k, v in dictionary.items()
@@ -16,10 +19,15 @@ def numpy_arrays_to_lists(
 
 
 def flatten_dict(
-    dictionary: dict[str, Any], key_separator: str = "_", recursive: bool = False
+    dictionary: dict[str, Any],
+    key_separator: str = "_",
+    recursive: bool = False,
 ) -> dict[str, Any]:
     """Flatten the dictionaries inside the given dictionary, joining the keys by the given key_separator.
     If recursive, then perform the flattening recursively
+    :param dictionary: The dictionary to flatten
+    :param key_separator: The string to join the flattened keys with
+    :param recursive: if true, go recursively through the dictionary, joining all sub dictionaries together
     """
     new_dict = {}
     for k, v in dictionary.items():
@@ -27,7 +35,9 @@ def flatten_dict(
             new_dict |= {
                 f"{k}{key_separator}{kk}": vv
                 for kk, vv in (
-                    flatten_dict(v, key_separator, recursive) if recursive else v
+                    flatten_dict(v, key_separator, recursive)
+                    if recursive
+                    else v
                 ).items()
             }
         else:
@@ -38,7 +48,10 @@ def flatten_dict(
 def unflatten_dict(
     dictionary: dict[str, Any], key_separator: str = "_"
 ) -> dict[str, Any]:
-    """Unflatten a flattened dict with keys separated by `key_separator`"""
+    """Unflatten a flattened dict with keys separated by `key_separator`
+    :param dictionary: the dictionary to unflatten
+    :param key_separator: the separating string to separate keys on
+    """
     new_dict = {}
     for k, v in dictionary.items():
         dict_ref = new_dict
@@ -67,5 +80,7 @@ def dict_of_lists_to_list_of_dicts(
     dict_of_lists: dict[str, list[T]]
 ) -> list[dict[str, T]]:
     """Transpose a dict of lists (columns of data) into a list of dictionaries (rows of data)"""
-    assoc_lists = zip(*[[(k, v) for v in vs] for k, vs in dict_of_lists.items()])
+    assoc_lists = zip(
+        *[[(k, v) for v in vs] for k, vs in dict_of_lists.items()]
+    )
     return [{a: b for (a, b) in assoc_list} for assoc_list in assoc_lists]
