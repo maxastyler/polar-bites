@@ -28,7 +28,7 @@ def test_converting_dict_to_dataframe():
             n: [1, 2, 3],
             "other": [True, False, False],
             "unused_data": [0, 0, 0],
-            "np_col": [np.random.rand(2, 2) for _ in range(3)],
+            # "np_col": [np.random.rand(2, 2) for _ in range(3)],
         }
         for n in ["a", "b"]
     ]

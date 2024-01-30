@@ -36,11 +36,7 @@ def load_mat_to_dict(
     array_transform_keys = array_transform_keys or []
     loaded = loadmat(filename, simplify_cells=True)
     loaded = loaded[
-        [
-            k
-            for k in loaded.keys()
-            if not (k.startswith("__") and k.endswith("__"))
-        ][0]
+        [k for k in loaded.keys() if not (k.startswith("__") and k.endswith("__"))][0]
         if var_name is None
         else var_name
     ]
@@ -67,9 +63,7 @@ def convert_dict_to_dataframe(
     :param columns: the set of Columns describing the column transformations that should happen to this dictionary
     """
     renames = {
-        n: (c.rename if c.rename is not None else n)
-        for c in columns
-        for n in c.names
+        n: (c.rename if c.rename is not None else n) for c in columns for n in c.names
     }
     transforms = {
         n: c.pre_transform
@@ -93,11 +87,7 @@ def convert_dict_to_dataframe(
         }
     )
     return new_frame.drop(
-        [
-            n
-            for (n, t) in zip(new_frame.columns, new_frame.dtypes)
-            if t == pl.Object
-        ]
+        [n for (n, t) in zip(new_frame.columns, new_frame.dtypes) if t == pl.Object]
     ).with_columns(types)
 
 

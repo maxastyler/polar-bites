@@ -1,6 +1,6 @@
-from livereload import Server, shell
 from platform import system
 
+from livereload import Server, shell
 
 if __name__ == "__main__":
     s = system()

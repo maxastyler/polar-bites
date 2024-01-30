@@ -35,9 +35,7 @@ def flatten_dict(
             new_dict |= {
                 f"{k}{key_separator}{kk}": vv
                 for kk, vv in (
-                    flatten_dict(v, key_separator, recursive)
-                    if recursive
-                    else v
+                    flatten_dict(v, key_separator, recursive) if recursive else v
                 ).items()
             }
         else:
@@ -80,7 +78,5 @@ def dict_of_lists_to_list_of_dicts(
     dict_of_lists: dict[str, list[T]]
 ) -> list[dict[str, T]]:
     """Transpose a dict of lists (columns of data) into a list of dictionaries (rows of data)"""
-    assoc_lists = zip(
-        *[[(k, v) for v in vs] for k, vs in dict_of_lists.items()]
-    )
+    assoc_lists = zip(*[[(k, v) for v in vs] for k, vs in dict_of_lists.items()])
     return [{a: b for (a, b) in assoc_list} for assoc_list in assoc_lists]

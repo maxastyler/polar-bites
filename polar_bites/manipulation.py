@@ -62,7 +62,7 @@ def merge(
         for column in to_merge
     ]
     return (
-        old.join(new, on=on, how="outer")
+        old.join(new, on=on, how="outer_coalesce")
         .with_columns(merge_expressions)
         .drop([f"{column}_right" for column in to_merge])
     )
@@ -98,7 +98,7 @@ def extract_tensor(
         coordinates = dataframe.select(pl.col(c).unique().sort())
         coordinates_list.append(coordinates.to_numpy())
         index_frame = coordinates.with_columns(
-            pl.col(c).cumcount().alias(f"{c}_index")
+            pl.col(c).cumcount().alias(f"{c}_index") - 1
         )
         shape.append(len(index_frame))
         dataframe = dataframe.join(index_frame, on=c)
