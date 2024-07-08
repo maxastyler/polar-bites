@@ -77,4 +77,4 @@ def test_convert_dict_to_dataframe():
         d = load_mat_to_dataframe(
             inmemoryfile, columns=[Column("a"), Column("b"), Column("c")]
         )
-        assert d.frame_equal(original_df)
+        assert d.equals(original_df)

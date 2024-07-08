@@ -42,15 +42,23 @@ def ensure_list_of_columns(columns: Optional[list[Union[str, Column]]]) -> list[
     )
 
 
-def polars_numerical_type_from_numpy_type(t: np.dtype) -> pl.PolarsDataType:
+def polars_numerical_type_from_numpy_type(t: np.dtype) -> pl.DataType:
     if t.type is np.int32:
         return pl.Int32
     elif t.type is np.int64:
         return pl.Int64
+    elif t.type is np.int8:
+        return pl.Int8
+    elif t.type is np.int16:
+        return pl.Int16
     elif t.type is np.uint32:
         return pl.UInt32
     elif t.type is np.uint64:
         return pl.UInt64
+    elif t.type is np.uint8:
+        return pl.UInt8
+    elif t.type is np.uint16:
+        return pl.UInt16
     elif t.type is np.float32:
         return pl.Float32
     elif t.type is np.float64:
@@ -59,7 +67,7 @@ def polars_numerical_type_from_numpy_type(t: np.dtype) -> pl.PolarsDataType:
         raise ValueError(f"Unsupported data type {t}")
 
 
-def polars_array_type_from_numpy_array(array: np.ndarray) -> pl.PolarsDataType:
+def polars_array_type_from_numpy_array(array: np.ndarray) -> pl.DataType:
     """Take a numpy array and convert it to the equivalent polars array type"""
 
     dims = list(reversed(array.shape))

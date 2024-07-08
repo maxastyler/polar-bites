@@ -45,7 +45,7 @@ def test_merge():
     assert (
         merge(frame_a, frame_b, ["a", "b"], ["c", "d"])
         .sort(["a", "b"])
-        .frame_equal(result.sort(["a", "b"]))
+        .equals(result.sort(["a", "b"]))
     )
 
 
@@ -56,7 +56,7 @@ def test_partition():
     df = pl.concat(original_dict.values())
     sdf = partition(df, ["a"])
     for k, v in original_dict.items():
-        assert sdf[k].frame_equal(v)
+        assert sdf[k].equals(v)
 
 
 def test_extract_tensor():

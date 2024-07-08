@@ -98,7 +98,7 @@ def extract_tensor(
         coordinates = dataframe.select(pl.col(c).unique().sort())
         coordinates_list.append(coordinates.to_numpy())
         index_frame = coordinates.with_columns(
-            pl.col(c).cumcount().alias(f"{c}_index") - 1
+            pl.col(c).cum_count().alias(f"{c}_index") - 1
         )
         shape.append(len(index_frame))
         dataframe = dataframe.join(index_frame, on=c)
