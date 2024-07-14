@@ -54,7 +54,9 @@ def load_mat_to_dict(
 
 
 def convert_dict_to_dataframe(
-    data_dict: dict[str, Any], columns: Sequence[Column]
+    data_dict: dict[str, Any],
+    columns: Sequence[Column],
+    strict: bool = False,
 ) -> pl.DataFrame:
     """Convert a dictionary to a dataframe,
     using the columns to perform various transformations on the data
@@ -84,7 +86,8 @@ def convert_dict_to_dataframe(
             else v
             for k, v in data_dict.items()
             if k in renames
-        }
+        },
+        strict=strict,
     )
     return new_frame.drop(
         [n for (n, t) in zip(new_frame.columns, new_frame.dtypes) if t == pl.Object]

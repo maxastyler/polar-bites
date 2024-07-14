@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "polar-bites"
-version = "0.2.0"
+version = "0.2.1"
 description = "Extra bites for py-polars"
 authors = ["maxastyler <maxastyler@gmail.com>"]
 readme = "README.md"
